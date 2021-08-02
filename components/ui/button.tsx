@@ -4,18 +4,29 @@ import classes from './button.module.css';
 
 interface ButtonProps {
     children: string;
-    link: string;
+    link?: string;
+    onClick?: () => void;
 }
 
-function Button({ children, link }: ButtonProps) {
+function Button({ children, link, onClick }: ButtonProps) {
     return (
-        <div className={classes.btn}>
-            <Link href={link}>
-                <a className={classes.btntext} >{children}</a>
+        <>
+            {link ? (
+                <div className={classes.btn}>
+                    <Link href={link}>
+                        <a className={classes.btntext} >{children}</a>
 
-            </Link>
-            <MdArrowForward className={classes.icon} />
-        </div>
+                    </Link>
+                    <MdArrowForward className={classes.icon} />
+                </div>
+            ) :
+                <button onClick={onClick} className={classes.btn}>
+                    <a className={classes.btntext} >{children}</a>
+                </button>
+            }
+
+
+        </>
 
     )
 }
