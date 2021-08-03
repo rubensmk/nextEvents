@@ -1,7 +1,7 @@
 import EventItem from "./event-item";
 import classes from './event-list.module.css';
 
-interface Event {
+export interface Event {
     id: string;
     title: string;
     description: string;

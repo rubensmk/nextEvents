@@ -1,22 +1,53 @@
-import { useRouter } from 'next/router';
+import { GetStaticProps } from 'next';
+import { Event } from '../../components/events/event-list';
 import EventContent from '../../components/event_details/event-content';
 import EventLogistics from '../../components/event_details/event-logistics';
 import EventSummary from '../../components/event_details/event-summary';
-import { getEventById } from '../../dummy-data';
+import { getEventById, getFeaturedEvents } from '../../helpers/api-util';
 
-export default function EventDetailPage() {
-    const router = useRouter();
-    const eventId = router.query.eventId;
-    const event = getEventById(eventId);
 
-    if (!event) {
-        return <p>No event found!</p>
+interface EventDetailPageProps {
+    selectedEvent: Event
+}
+export default function EventDetailPage({ selectedEvent }: EventDetailPageProps) {
+
+    if (!selectedEvent) {
+        return (
+            <div className="center">
+                <p>Loading....</p>
+            </div>
+        )
     }
     return (
         <>
-            <EventSummary title={event.title} />
-            <EventLogistics date={event.date} address={event.location} image={event.image} imageAlt={event.title} />
-            <EventContent>{event.description}</EventContent>
+            <EventSummary title={selectedEvent.title} />
+            <EventLogistics date={selectedEvent.date} address={selectedEvent.location} image={selectedEvent.image} imageAlt={selectedEvent.title} />
+            <EventContent>{selectedEvent.description}</EventContent>
         </>
     )
+}
+
+export const getStaticPaths = async () => {
+    const events = await getFeaturedEvents()
+    const paths = events.map(event => ({
+        params: {
+            eventId: event.id
+        }
+    }))
+    return {
+        paths: paths,
+        fallback: true
+    }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    const eventId = params?.eventId;
+
+    const event = await getEventById(eventId);
+    return {
+        props: {
+            selectedEvent: event
+        },
+        revalidate: 30
+    }
 }

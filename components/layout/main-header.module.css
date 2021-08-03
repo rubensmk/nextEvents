@@ -24,6 +24,11 @@
     color: #94fdfd;
   }
   
+  .logo p{
+    font-style: italic;
+    font-weight: 100;
+    margin-left: 8px;
+  }
   .navigation a {
     text-decoration: none;
     color: #74dacc;
