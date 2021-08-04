@@ -4,6 +4,7 @@ import { Event } from '../../components/events/event-list';
 import EventContent from '../../components/event_details/event-content';
 import EventLogistics from '../../components/event_details/event-logistics';
 import EventSummary from '../../components/event_details/event-summary';
+import Comments from '../../components/input/comments';
 import { getEventById, getFeaturedEvents } from '../../helpers/api-util';
 
 
@@ -31,6 +32,7 @@ export default function EventDetailPage({ selectedEvent }: EventDetailPageProps)
             <EventSummary title={selectedEvent.title} />
             <EventLogistics date={selectedEvent.date} address={selectedEvent.location} image={selectedEvent.image} imageAlt={selectedEvent.title} />
             <EventContent>{selectedEvent.description}</EventContent>
+            <Comments eventId={selectedEvent.id} />
         </>
     )
 }
