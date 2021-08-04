@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 import LogisticsItem from './logistics-item';
 import classes from './event-logistics.module.css';
-
+import Image from 'next/image';
+import { MdEvent, MdPlace } from 'react-icons/md'
 interface EventLogisticsProps {
   date: string;
   address: string;
@@ -21,13 +21,13 @@ function EventLogistics({ date, address, image, imageAlt }: EventLogisticsProps)
   return (
     <section className={classes.logistics}>
       <div className={classes.image}>
-        <img src={`${image}`} alt={imageAlt} />
+        <Image src={`${image}`} alt={imageAlt} width={280} height={180} />
       </div>
       <ul className={classes.list}>
-        <LogisticsItem >
+        <LogisticsItem icon="event" >
           {humanReadableDate}
         </LogisticsItem>
-        <LogisticsItem >
+        <LogisticsItem icon="place" >
           {addressText}
         </LogisticsItem>
       </ul>

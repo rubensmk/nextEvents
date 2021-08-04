@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;700&display=swap');
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
   margin:0;
-  font-family: 'Open Sans', 'Lato', sans-serif;
-  color:#414141;
-  background-color:#e4f1f1;
+  font-family: 'Roboto', sans-serif;
+  color:#F1F1F6;
+  background-color:#596E79;
 }
 
 
@@ -18,7 +20,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Lato', sans-serif;
+  font: 400 1rem "Roboto", sans-serif;
 }
 
 ul{

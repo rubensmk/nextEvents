@@ -1,6 +1,6 @@
 import Link from "next/link";
 import classes from './main-header.module.css';
-import { MdNextWeek } from 'react-icons/md'
+import { MdNextWeek, MdCollectionsBookmark } from 'react-icons/md'
 
 function MainHeader() {
     return (
@@ -11,11 +11,8 @@ function MainHeader() {
                 <Link href="/">Events</Link>
             </div>
             <nav className={classes.navigation}>
-                <ul>
-                    <li>
-                        <Link href="/events"> Browse All Events</Link>
-                    </li>
-                </ul>
+                <MdCollectionsBookmark />
+                <Link href="/events"> Browse All Events</Link>
             </nav>
         </header>
     )

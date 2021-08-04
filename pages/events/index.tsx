@@ -3,6 +3,7 @@ import EventsSearch from "../../components/events/event-search";
 import { useRouter } from "next/router";
 import { getAllEvents } from '../../helpers/api-util';
 import { GetStaticProps } from 'next';
+import Head from 'next/head';
 
 interface EventsProps {
     events: Event[]
@@ -17,6 +18,13 @@ export default function Events({ events }: EventsProps) {
     }
     return (
         <>
+            <Head>
+                <title>NEXT Events | All Events</title>
+                <meta
+                    name='description'
+                    content="All events available"
+                />
+            </Head>
             <EventsSearch onSearch={handleFilteredSearch} />
             <EventList items={events} />
         </>

@@ -1,8 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
-import Link from 'next/link';
 import Button from '../ui/button';
+import Image from 'next/image';
 import classes from './event-item.module.css';
-import { MdEvent, MdPlace, MdChevronRight } from 'react-icons/md';
+import { MdEvent, MdPlace } from 'react-icons/md';
 interface Event {
     id: string;
     title: string;
@@ -28,7 +27,7 @@ function EventItem({ event }: EventItemProps) {
 
     return (
         <li className={classes.item}>
-            <img src={event.image} alt={event.title} />
+            <Image src={event.image} alt={event.title} width={260} height={160} />
             <div className={classes.content}>
                 <div className={classes.summary}>
                     <h2>{event.title}</h2>

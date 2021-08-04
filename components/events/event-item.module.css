@@ -1,20 +1,28 @@
 .item {
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px 12px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 1px #232931, 1px 1px 1px 1px #232931;
     border-radius: 8px;
     overflow: hidden;
-    background-color: white;
+    background-color: #086972;
     margin: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
   }
-  
+
+  .item:hover{
+    transform: translateX(10px);
+  }
   .item img {
     width: 100%;
     object-fit: cover;
     height: 10rem;
   }
-  
+  .item h2{
+    color:#F1F1F6;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
   .content {
     width: 100%;
     padding: 0 1rem;
@@ -36,17 +44,17 @@
   .address svg {
     width: 1.25rem;
     height: 1.25rem;
-    color: #666666;
+    color: #F1F1F6;
   }
   
   .content time {
-    color: #666666;
-    font-weight: bold;
+    color: #F1F1F6;
+    font-weight: 300;
   }
   
   .content address {
     margin: 0.5rem 0;
-    color: #666666;
+    color: #F1F1F6;
     white-space: pre;
   }
   

@@ -2,7 +2,7 @@
     margin: 2rem auto;
     box-shadow: 0 1px 4px rgba(0,0,0,0.2);
     padding: 1rem;
-    background-color: white;
+    background-color: #086972;
     border-radius: 6px;
     width: 90%;
     max-width: 40rem;
@@ -43,9 +43,9 @@
     width: 100%;
     font: inherit;
     padding: 0.25rem 0.5rem;
-    background-color: #03be9f;
-    border: 1px solid #03be9f;
-    color: #dafff7;
+    background-color: #E43F5A;
+    border: 1px solid #E43F5A;
+    color: #F1F1F6;
     border-radius: 4px;
   }
   

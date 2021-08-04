@@ -4,6 +4,7 @@ import ResultsTitle from "../../components/events/results-title";
 import EventList, { Event } from "../../components/events/event-list";
 import { GetServerSideProps } from "next";
 import Button from "../../components/ui/button";
+import Head from "next/head";
 
 interface FilteredEventsPageProps {
     hasError: boolean;
@@ -25,16 +26,22 @@ export default function FilteredEventsPage({ hasError, events, date }: FilteredE
     }
 
     const showDate = new Date(date.year, date.month - 1)
-    if (hasError) {
-        return (
-            <div className="center">
-                <p>Invalid filter. Please adjust your values!</p>
-                <Button link="/events">Show all events</Button>
-            </div>
-        )
-    }
+
     return (
         <>
+            {hasError && (
+                <div className="center">
+                    <p>Invalid filter. Please adjust your values!</p>
+                    <Button link="/events">Show all events</Button>
+                </div>
+            )}
+            <Head>
+                <title>{`All Events for ${date.month}/${date.year}`}</title>
+                <meta
+                    name='description'
+                    content={`All Events for ${date.month}/${date.year}`}
+                />
+            </Head>
             <ResultsTitle date={showDate} />
             <EventList items={events} />
         </>

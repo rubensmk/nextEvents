@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 import EventList, { Event } from "../components/events/event-list";
 import { getFeaturedEvents } from "../helpers/api-util";
+import Head from 'next/head';
 
 interface HomeProps {
   events: Event[];
@@ -10,6 +11,13 @@ export default function Home({ events }: HomeProps) {
 
   return (
     <>
+      <Head>
+        <title>NEXT Events | Home</title>
+        <meta
+          name='description'
+          content="All featured events available"
+        />
+      </Head>
       <EventList items={events} />
     </>
   )

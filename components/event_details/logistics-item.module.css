@@ -2,18 +2,19 @@
   display: flex;
   font-size: 1.5rem;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   text-align: center;
-  color: #aefff8;
+  color: #F1F1F6;
 }
 
 .item span {
   display: block;
+  margin-left: 0.5rem;
 }
 
 .icon {
   margin-right: 1rem;
-  color: #18e0d0;
+  color: #F1F1F6;
 }
 
 .icon svg {
