@@ -1,19 +1,28 @@
-import { useRef, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import classes from './new-comment.module.css';
 
-function NewComment(props) {
+export type Comment = {
+    email: string;
+    name: string;
+    text: string;
+}
+interface NewCommentProps {
+    onAddComment: ({ ...Comment }: Comment) => void;
+}
+
+function NewComment({ onAddComment }: NewCommentProps) {
     const [isInvalid, setIsInvalid] = useState(false);
 
-    const emailInputRef = useRef();
-    const nameInputRef = useRef();
-    const commentInputRef = useRef();
+    const emailInputRef = useRef<HTMLInputElement>(null);
+    const nameInputRef = useRef<HTMLInputElement>(null);
+    const commentInputRef = useRef<HTMLTextAreaElement>(null);
 
-    function sendCommentHandler(event) {
+    function sendCommentHandler(event: FormEvent) {
         event.preventDefault();
 
-        const enteredEmail = emailInputRef.current.value;
-        const enteredName = nameInputRef.current.value;
-        const enteredComment = commentInputRef.current.value;
+        let enteredEmail = emailInputRef.current?.value;
+        let enteredName = nameInputRef.current?.value;
+        let enteredComment = commentInputRef.current?.value;
 
         if (
             !enteredEmail ||
@@ -28,15 +37,18 @@ function NewComment(props) {
             return;
         }
 
-        props.onAddComment({
+        onAddComment({
             email: enteredEmail,
             name: enteredName,
             text: enteredComment,
         });
+        enteredEmail = '';
+        enteredName = '';
+        enteredComment = '';
     }
 
     return (
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={sendCommentHandler}>
             <div className={classes.row}>
                 <div className={classes.control}>
                     <label htmlFor='email'>Your email</label>
@@ -49,7 +61,7 @@ function NewComment(props) {
             </div>
             <div className={classes.control}>
                 <label htmlFor='comment'>Your comment</label>
-                <textarea id='comment' rows='5' ref={commentInputRef}></textarea>
+                <textarea id='comment' rows={5} ref={commentInputRef}></textarea>
             </div>
             {isInvalid && <p>Please enter a valid email address and comment!</p>}
             <button>Submit</button>
