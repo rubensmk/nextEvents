@@ -1,3 +1,15 @@
+.commentsSection{
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}
+
+.commentsSection h1{
+  font-size:20px;
+  font-weight: bold;
+  text-align: left;
+}
+
 .comments {
     display: flex;
     flex-direction: column;
